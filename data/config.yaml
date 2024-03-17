@@ -1,0 +1,23 @@
+model_features:
+  - dteday
+  - season
+  - yr
+  - mnth
+  - hr
+  - holiday
+  - weekday
+  - workingday
+  - weathersit
+  - temp
+  - atemp
+  - hum
+  - windspeed
+  - time_bin_encoded
+  - season_name_encoded
+  - rush_hour
+  - ideal
+  - sticky
+
+
+target_feature:
+  - cnt

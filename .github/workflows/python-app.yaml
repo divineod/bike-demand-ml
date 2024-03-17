@@ -1,0 +1,42 @@
+name: Bike sharing demand prediction service
+
+on:
+  push:
+    branches: [ main ]
+  pull_request:
+    branches: [ main ]
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+
+    - name: Set up Python
+      uses: actions/setup-python@v2
+      with:
+        python-version: '3.9'
+
+    - name: Install dependencies
+      run: pip install -r requirements.txt
+
+    - name: Run Tests
+      run: python -m unittest discover -s tests
+
+    - name: Build Docker Image
+      if: github.ref == 'refs/heads/main'
+      run: docker build --tag bike-prediction-ml ./bike-prediction-ml
+
+    - name: Push Docker Image to Registry
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "Push image to your Docker registry here"
+        # docker push bike-prediction-ml:tagname
+
+    - name: Deployment Step Placeholder
+      if: github.ref == 'refs/heads/main'
+      run: |
+        echo "Deploy to the server or Kubernetes cluster here"
+        # Example: ssh deploy@server 'docker run -d -p 5555:5555 bike-prediction-ml'
+
