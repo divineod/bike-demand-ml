@@ -7,19 +7,15 @@ This repository contains a production-ready Machine Learning model for forecasti
 ├── README.md                                       > Contains instructions on what the repository contains, how to set up the modules and how to use them.
 ├── data                                            > Contains all csv and excel files and model.pkl
 |    ├── models                                     >> Folder with trained models
-|    |      └── model.pbz2                          >>> Trained model
-|    ├── tomato.xlsx                                >> Scraped monthly tomato prices
-|    ├── onion.xlsx                                 >> Scraped monthly onion prices
-|    ├── irish_potato.xlsx                          >> Scraped monthly irish potato prices
-
-|     
-├── app                                             > Docker container for Prediction api
+|    |      └── catboost_model.cbm                  >>> Trained  and serialized model
+|    ├── training_data.csv                          >> Master training data
+|    ├── config.yaml.csv                            >> Model features
+├── app                                             > Folder for Prediction api code
 |    ├── prediction.py                              >> Prediction module and command line API
 |    ├── get_prediction.py                          >> Python script to test prediciton API
 |
 ├──tests                                            > Folder with python unit tests for repository      
 |    ├── test_prediction_api.py                     >> API endpoint tests
-|    ├── test_data_processing.py                    >> tests for data processing functions
 ├── config.ini                                      >> Configuration file with all the initialized values and paths
 ├── Dockerfile                                      >> Dockerfile for building image and spawning container for prediction API
 ├── requirements.txt                                >> Requirements file with all dependencies
@@ -105,11 +101,9 @@ Docker installation depends on the host OS. Please refer [https://docs.docker.co
 
 ### Tests in the `tests` folder
 
-The `tests` folder contains unit tests designed to ensure the robustness and accuracy of the prediction and data processing modules:
+The `tests` folder contains unit tests designed to ensure the robustness and accuracy of the prediction module:
 
 - **`test_prediction_api.py`**: Contains tests for the prediction API endpoints. These tests simulate API requests and check for correct status codes, response formats, and the accuracy of predictions for known inputs.
-
-- **`test_data_processing.py`**: Focuses on testing the data processing functions within the prediction server code. It checks that the data filtering, feature engineering, and preprocessing steps return the expected output for given inputs.
 
 To run these tests, spawn the docker container, navigate to the repository root and execute:
 
