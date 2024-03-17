@@ -107,5 +107,20 @@ The `tests` folder contains unit tests designed to ensure the robustness and acc
 
 To run these tests, spawn the docker container, navigate to the repository root and execute:
 
+
+## 5. CI/CD Pipeline
+
+The CI/CD pipeline for this project is defined in the `.github` folder, which contains GitHub Actions workflows for automated testing, Docker image building, and deployment.
+
+### Key Components:
+
+- **Automated Testing**: On every push or pull request, the CI pipeline runs unit tests defined in the `tests` folder to ensure code changes do not break existing functionality.
+
+- **Docker Image Building**: For merges into the main branch, the CI pipeline automatically builds a Docker image for the prediction API using the `Dockerfile`.
+
+- **Deployment**: The CD pipeline can be configured to automatically deploy the latest Docker image to a production environment, ensuring that the prediction service is always up-to-date.
+
+To customize the CI/CD pipeline for your environment, modify the workflow files in the `.github/workflows` directory.
+
 ```bash
 python -m unittest discover -s tests
