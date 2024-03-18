@@ -95,7 +95,6 @@ Docker installation depends on the host OS. Please refer [https://docs.docker.co
     ```json
     {"0": 122.61645440871234, "1": 90.421508067395, "2": 68.23767079434626, "3": 33.817141596024385, "4": 24.418046302801486, "5": 31.40367799480748, "6": 55.83285229964325, "7": 123.39448565725763, "8": 228.00894382430394, "9": 285.79271912890874, "10": 392.38677788603593, "11": 455.8238122110369, "12": 513.0105588192546, "13": 516.6045843676111, "14": 508.3662804962507, "15": 514.3626031538838, "16": 532.9201113724275, "17": 529.33354355843, "18": 489.8726974745671, "19": 388.7894078735194, "20": 341.68015521930096, "21": 269.28715935410673, "22": 181.03138714804314, "23": 116.27599805626227}
     ```
-    - Model is not retrained regularly so valid dates can be found in valid_dates.csv.
 
 ## 4. Testing
 
@@ -107,6 +106,9 @@ The `tests` folder contains unit tests designed to ensure the robustness and acc
 
 To run these tests, spawn the docker container, navigate to the repository root and execute:
 
+```bash
+python -m unittest discover -s tests
+```
 
 ## 5. CI/CD Pipeline
 
@@ -122,5 +124,3 @@ The CI/CD pipeline for this project is defined in the `.github` folder, which co
 
 To customize the CI/CD pipeline for your environment, modify the workflow files in the `.github/workflows` directory.
 
-```bash
-python -m unittest discover -s tests
